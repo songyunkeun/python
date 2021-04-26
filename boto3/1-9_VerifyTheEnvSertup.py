@@ -6,14 +6,41 @@
 # ========================================
 import boto3
 
-aws_mag_con=boto3.session.Session(profile_name="default")
-iam_con=aws_mag_con.resource('iam')
-
-for each_user in iam_con.users.all():
-    print(each_user.name)
+# aws_mag_con=boto3.session.Session(profile_name="default")
+# iam_con=aws_mag_con.resource(service_name='iam', region_name='ap-northeast-2')
+# iam_con_resource=aws_mag_con.resource('iam')
+# iam_con_client=aws_mag_con.client('iam')
+# # print(dir(aws_mag_con))
+# # print(aws_mag_con.get_available_resources)
+#
+# # for each_user in iam_con_resource.users.all(): # Resource는 List
+# #     print(each_user)    # .attribute: arn, create_date, password_last_used, path, permissions_boundary,tags, user_id,user_name
+#
+# for each_user in iam_con_client.list_users()['Users']:   # client는 Dictionary.  항목은 resource의 attribute와 비슷
+#     print(each_user)
 
 #========================================
-# import boto3
-# aws_mag_con=boto3.session.Session(profile_name="default")
-# s3_con=aws_mag_con.resource('s3')
+aws_mag_con=boto3.session.Session(profile_name="default")
+ec2_con_resource=aws_mag_con.resource('ec2')
+ec2_con_client=aws_mag_con.client('ec2')
+for each_ec2 in ec2_con_resource.instances.all():
+    print(each_ec2)   # .attribute: 매우 많다
+
+# for each_ec2 in ec2_con_client.describe_instances()['Reservations']:    # client는 Dictionary
+#     print(each_ec2)
+
+
+
+
+## print(dir(aws_mag_con))
+# ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__',
+#  '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__',
+#  '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__',
+#  '__subclasshook__', '__weakref__', '_loader', '_register_default_handlers', '_session', '_setup_loader',
+#  'available_profiles', 'client', 'events', 'get_available_partitions', 'get_available_regions',
+#  'get_available_resources', 'get_available_services', 'get_credentials', 'profile_name', 'region_name',
+#  'resource', 'resource_factory']
+
+# print(aws_mag_con.get_available_resources())
+# ['cloudformation', 'cloudwatch', 'dynamodb', 'ec2', 'glacier', 'iam', 'opsworks', 's3', 'sns', 'sqs']
 
