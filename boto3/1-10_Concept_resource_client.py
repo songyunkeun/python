@@ -6,28 +6,28 @@
 # ========================================
 import boto3
 
-# aws_mag_con=boto3.session.Session(profile_name="default")
-# iam_con=aws_mag_con.resource(service_name='iam', region_name='ap-northeast-2')
-# iam_con_resource=aws_mag_con.resource('iam')
-# iam_con_client=aws_mag_con.client('iam')
+aws_mag_con=boto3.session.Session(profile_name="default")
+iam_con_resource=aws_mag_con.resource(service_name='iam', region_name='ap-northeast-2')
+# iam_con_client=aws_mag_con.client(service_name='iam')
 # # print(dir(aws_mag_con))
 # # print(aws_mag_con.get_available_resources)
 #
-# # for each_user in iam_con_resource.users.all(): # Resource는 List
-# #     print(each_user)    # .attribute: arn, create_date, password_last_used, path, permissions_boundary,tags, user_id,user_name
-#
-# for each_user in iam_con_client.list_users()['Users']:   # client는 Dictionary.  항목은 resource의 attribute와 비슷
+for each_user in iam_con_resource.users.all(): # Resource는 List
+    print(each_user)    # .attribute: arn, create_date, password_last_used, path, permissions_boundary,tags, user_id,user_name
+
+# for each_user in iam_con_client.list_users()['Users']:  # client는 Dictionary.  항목은 resource의 attribute와 비슷
 #     print(each_user)
 
 #========================================
-aws_mag_con=boto3.session.Session(profile_name="default")
-ec2_con_resource=aws_mag_con.resource('ec2')
-ec2_con_client=aws_mag_con.client('ec2')
-for each_ec2 in ec2_con_resource.instances.all():
-    print(each_ec2)   # .attribute: 매우 많다
+# aws_mag_con=boto3.session.Session(profile_name="default")
+# ec2_con_resource=boto3.resource(service_name='ec2')
+# ec2_con_client=aws_mag_con.client(service_name='ec2')
+# for each_ec2 in ec2_con_resource.instances.all():
+#     print(each_ec2)   # .attribute: 매우 많다
 
 # for each_ec2 in ec2_con_client.describe_instances()['Reservations']:    # client는 Dictionary
-#     print(each_ec2)
+#     for each in each_ec2['Instances']:
+#         print(each['InstanceId'])
 
 
 
