@@ -9,4 +9,5 @@ print(response)
 
 
 #{'UserId': 'AIDAIMYNZVJ3E2GXMANNQ', 'Account': '533238068160', 'Arn': 'arn:aws:iam::533238068160:user/syk',
+#{'UserId': '533238068160', 'Account': '533238068160', 'Arn': 'arn:aws:iam::533238068160:root',
  
